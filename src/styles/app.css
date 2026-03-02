@@ -7,7 +7,7 @@
 :root {
   --radius: 0.5rem;
 
-  --background: oklch(79.608% 0.11291 58.181);
+  --background: #edbb95;
   --secondary-background: oklch(88.286% 0.07567 58.775);
 
   --foreground: oklch(37.839% 0.10139 23.236);
@@ -54,6 +54,7 @@
   --sidebar-ring: var(--ring);
 
   --link: oklch(0.4317 0.2069 291.76);
+
 }
 
 @theme {
@@ -90,6 +91,33 @@
   --color-ring: var(--ring);
 
   --color-link: var(--link);
+
+  --color-button-primary-default: oklch(0.3784 0.1014 23.26);
+  --color-button-primary-hover: oklch(0.5046 0.1213 29.72);
+  --color-button-primary-click: oklch(0.2973 0.0922 24.71);
+  --color-button-primary-disabled: oklch(0.6784 0.0818 317.75);
+  --color-button-primary-focus: oklch(0.3784 0.1014 23.26);
+  --color-button-primary-border: oklch(0.5046 0.1213 29.72);
+  --color-button-primary-inner-shadow: oklch(0.2197 0.0776 347.51);
+  --color-button-primary-active: oklch(0.2973 0.0922 24.71);
+
+  --color-button-secondary-default: oklch(0.8829 0.0757 58.81);
+  --color-button-secondary-hover: oklch(0.7961 0.113 58.2);
+  --color-button-secondary-click: oklch(0.7299 0.1323 56.21);
+  --color-button-secondary-disabled: oklch(0.864 0.0578 324.23);
+  --color-button-secondary-disabled-border: oklch(0.6784 0.0818 317.75);
+  --color-button-secondary-focus: oklch(0.8829 0.0757 58.81);
+  --color-button-secondary-border: oklch(0.3784 0.1014 23.26);
+
+  --color-button-destructive-default: oklch(0.5584 0.2089 17.13);
+  --color-button-destructive-hover: oklch(0.6178 0.0868 5.38);
+  --color-button-destructive-click: oklch(0.4251 0.1455 13.66);
+  --color-button-destructive-disabled: oklch(0.8528 0.0563 4.38);
+  --color-button-destructive-disabled-text: oklch(0.6178 0.0868 5.38);
+  --color-button-destructive-focus: oklch(0.5584 0.2089 17.13);
+  --color-button-destructive-text: oklch(0.9499 0.011 63.36);
+
+  --color-button-drop-shadow: oklch(0.2989 0.1132 316.79 / 60%);
 
   --radius-sm: calc(var(--radius) * 0.5);
   --radius-md: calc(var(--radius) * 0.75);

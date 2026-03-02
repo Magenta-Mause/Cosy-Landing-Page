@@ -5,6 +5,7 @@ import bushImg from "@/assets/props/bush.png";
 import cathyGato from "@/assets/props/cathy.gif";
 import cosyLogo from "@/assets/props/cosy-logo.gif";
 import houseImg from "@/assets/props/house2.png";
+import backgroundImg from "@/assets/background.png";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -23,11 +24,13 @@ export function HomePage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col" style={{backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <div className="min-h-screen">
+
       {/* Header */}
-      <header className="bg-button-secondary-default h-fit">
+      <header className="bg-button-secondary-default h-fit bg-background">
         <div className="mx-auto p-8 flex h-14 items-center justify-between px-4">
-          <h1 className="text-lg font-bold tracking-tight">COSY</h1>
+          <h1 className="text-lg font-bold tracking-tight pt-2">COSY</h1>
           <nav className="flex items-center gap-6 text-sm">
             <a href="/docs" className="hover:text-muted-foreground transition">
               Documentation
@@ -45,11 +48,11 @@ export function HomePage() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center text-center px-4 py-24">
         <img src={cosyLogo} alt="Cosy logo" className="w-[32vw]" />
-        <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+        <p className="mt-6 text-xl text-muted-foreground">
           Easily host your game servers on your own infrastructure.
         </p>
         <div className="mt-8 w-full max-w-xl">
-          <div className="flex items-center rounded-md border-border border-3 bg-card px-1 py-1 gap-2">
+          <div className="flex items-center rounded-md border-border border-3 bg-background px-1 py-1 gap-2">
             <div className="flex-1 min-w-0 overflow-x-auto">
               <code className="block whitespace-nowrap text-sm px-2">$ {curlCommand}</code>
             </div>
@@ -78,29 +81,11 @@ export function HomePage() {
           </Button>
         </div>
       </main>
-
-      {/* images */}
-      <div className="flex justify-between bottom-[-10] mx-6 pointer-events-none select-none">
-        <img src={houseImg} aria-label="cosy house decoration" className="-mb-3 z-999" />
-        <div className="flex gap-4 items-end">
-          <img
-            src={cathyGato}
-            aria-label="el gato"
-            className="-mb-3 z-999"
-            style={{ width: "96px", height: "auto", imageRendering: "pixelated" }}
-          />
-          <img
-            src={bushImg}
-            aria-label="cosy bush"
-            className="-mb-8 z-999"
-            style={{ width: "128px", height: "auto", imageRendering: "pixelated" }}
-          />
-        </div>
-      </div>
+</div>
 
       {/* Footer */}
       <footer className="bg-button-secondary-default h-fit">
-        <div className="mx-2 px-4 py-8 text-sm">
+        <div className="mx-2 px-4 pt-7 text-sm pb-4">
           <div className="flex flex-col gap-6 md:flex-row md:justify-between">
             <div>
               <h5 className="text-sm">COSY by MedalHeads</h5>
