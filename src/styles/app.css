@@ -173,18 +173,18 @@
 
 @layer utilities {
   .bg-fd-card {
-    background: var(--color-card) !important;
+    background: var(--color-card);
   }
 
   .text-fd-foreground {
-    color: var(--color-foreground) !important;
+    color: var(--color-foreground);
   }
 
   .text-fd-muted {
-    color: var(--color-muted-foreground) !important;
+    color: var(--color-muted-foreground);
   }
 
   .border-fd {
-    border-color: var(--color-border) !important;
+    border-color: var(--color-border);
   }
 }
