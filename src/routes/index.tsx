@@ -1,24 +1,132 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { HomeLayout } from "fumadocs-ui/layouts/home";
-import { baseOptions } from "@/lib/layout.shared";
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Copy, Check, SquareArrowOutUpRight } from "lucide-react";
+import cosyLogo from "@/assets/props/cosy-logo.gif";
+import cathyGato from "@/assets/props/cathy.gif";
+import houseImg from "@/assets/props/house2.png";
+import bushImg from "@/assets/props/bush.png";
 
 export const Route = createFileRoute("/")({
-  component: Home,
+  component: HomePage,
 });
 
-function Home() {
+export function HomePage() {
+  const curlCommand =
+    "curl -fsSL https://raw.githubusercontent.com/Magenta-Mause/Cosy/refs/heads/main/install_cosy.sh | sh";
+  const [copied, setCopied] = useState(false);
+
+  async function copyToClipboard() {
+    await navigator.clipboard.writeText(curlCommand);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
   return (
-    <HomeLayout {...baseOptions()} className="text-center py-32 justify-center">
-      <h1 className="font-medium text-xl mb-4">Fumadocs on Tanstack Start.</h1>
-      <Link
-        to="/docs/$"
-        params={{
-          _splat: "",
-        }}
-        className="px-3 py-2 rounded-lg bg-fd-primary text-fd-primary-foreground font-medium text-sm mx-auto"
-      >
-        Open Docs
-      </Link>
-    </HomeLayout>
+    <div className="flex min-h-screen flex-col">
+      {/* Header */}
+      <header className="bg-button-secondary-default h-fit">
+        <div className="mx-auto p-8 flex h-14 items-center justify-between px-4">
+          <h1 className="text-lg font-bold tracking-tight">COSY</h1>
+          <nav className="flex items-center gap-6 text-sm">
+            <a href="/docs" className="hover:text-muted-foreground transition">
+              Documentation
+            </a>
+            <a
+              href="https://github.com/Magenta-Mause/Cosy"
+              className="hover:text-muted-foreground transition flex items-center gap-1"
+            >
+              GitHub <SquareArrowOutUpRight size={18} />
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col items-center text-center px-4 py-24">
+        <img src={cosyLogo} aria-label="cosy header" className="w-[32vw]" />
+        <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+          Easily host your game servers on your own infrastructure.
+        </p>
+        <div className="mt-8 w-full max-w-xl">
+          <div className="flex items-center rounded-md border-border border-3 bg-card px-1 py-1 gap-2">
+            <div className="flex-1 min-w-0 overflow-x-auto">
+              <code className="block whitespace-nowrap text-sm px-2">$ {curlCommand}</code>
+            </div>
+            <Button variant="ghost" onClick={copyToClipboard} className="border-3 shrink-0">
+              {copied ? (
+                <Check className="h-4 w-4 stroke-3" />
+              ) : (
+                <Copy className="h-4 w-4 stroke-3" />
+              )}
+            </Button>
+          </div>
+        </div>
+        <div className="mt-8 flex gap-4">
+          <a href="/docs">
+            <Button size="lg" className="border-3">
+              Get Started
+            </Button>
+          </a>
+
+          <a
+            href="https://github.com/magenta-Mause/cosy-templates"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button size="lg" className="border-3" variant="secondary">
+              Templates
+            </Button>
+          </a>
+        </div>
+      </main>
+
+      {/* images */}
+      <div className="flex justify-between bottom-[-10] mx-6 pointer-events-none select-none">
+        <img src={houseImg} aria-label="cosy house decoration" className="-mb-3 z-999" />
+        <div className="flex gap-4 items-end">
+          <img
+            src={cathyGato}
+            aria-label="el gato"
+            className="-mb-3 z-999"
+            style={{ width: "96px", height: "auto", imageRendering: "pixelated" }}
+          />
+          <img
+            src={bushImg}
+            aria-label="cosy bush"
+            className="-mb-8 z-999"
+            style={{ width: "128px", height: "auto", imageRendering: "pixelated" }}
+          />
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-button-secondary-default h-fit">
+        <div className="mx-2 px-4 py-8 text-sm">
+          <div className="flex flex-col gap-6 md:flex-row md:justify-between">
+            <div>
+              <h5 className="text-sm">COSY by MedalHeads</h5>
+              <p className="mt-2 max-w-md text-muted-foreground">
+                COSY stands for Cost Optimised Server Yard. A simplified, cost-efficient
+                self-hosting service for running game servers.
+              </p>
+            </div>
+
+            <div className="text-muted-foreground space-y-1 flex gap-16">
+              <div className="flex flex-col">
+                <span>Contact:</span>
+                <span>jabbekeipert@gmail.com</span>
+                <span>+49 160 92422210</span>
+              </div>
+              <div className="flex flex-col text-end">
+                <span>Janne Keipert</span>
+                <span>Marchlewskistr 102</span>
+                <span>10243 Berlin</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }

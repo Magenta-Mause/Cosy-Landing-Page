@@ -1,3 +1,190 @@
 @import "tailwindcss";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(79.608% 0.11291 58.181);
+  --secondary-background: oklch(88.286% 0.07567 58.775);
+
+  --foreground: oklch(37.839% 0.10139 23.236);
+  --text: oklab(37.839% 0.09316 0.04);
+
+  --outline: oklab(29.729% 0.08376 0.03852);
+  --shadow: oklch(29.893% 0.11327 316.782);
+
+  --accent: oklch(72.99% 0.13226 56.19);
+  --accent-foreground: oklch(0.98 0.02 145);
+
+  --white: oklch(94.99% 0.01095 63.101);
+  --alarm: oklch(55.842% 0.20891 17.11);
+
+  --card: oklch(0.772 0.068 81.566);
+  --card-foreground: oklch(0.28 0.06 45);
+
+  --popover: var(--card);
+  --popover-foreground: var(--card-foreground);
+
+  --primary: oklch(0.68 0.16 65);
+  --primary-foreground: oklch(0.25 0.05 45);
+
+  --secondary: oklch(0.88 0.12 85);
+  --secondary-foreground: oklch(0.28 0.06 45);
+
+  --muted: oklch(0.88 0.04 85);
+  --muted-foreground: oklch(0.5 0.08 45);
+
+  --destructive: oklch(0.55 0.22 25);
+  --input: oklch(0.45 0.12 50);
+  --ring: var(--primary);
+
+  --chart-1: oklch(0.68 0.16 65);
+  --chart-2: oklch(0.65 0.2 135);
+  --chart-3: oklch(0.85 0.15 85);
+  --chart-4: oklch(0.65 0.1 240);
+  --chart-5: oklch(0.6 0.22 340);
+
+  --sidebar: oklch(0.9 0.06 85);
+  --sidebar-foreground: var(--card-foreground);
+  --sidebar-border: var(--input);
+  --sidebar-accent: oklch(0.85 0.12 85);
+  --sidebar-ring: var(--ring);
+
+  --link: oklch(0.4317 0.2069 291.76);
+}
+
+@theme {
+  --text-xs: 18px;
+  --text-sm: 24px;
+  --text-base: 28px;
+  --text-lg: 32px;
+  --text-xl: 42px;
+  --text-2xl: 52px;
+  --text-3xl: 78px;
+
+  --leading-snug: 1;
+  --leading-normal: 1.125;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--input);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-ring: var(--ring);
+
+  --color-link: var(--link);
+
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.25);
+}
+
+@layer base {
+  @font-face {
+    font-family: "Glasstown";
+    src: url("../assets/font-family/glasstown_nbp.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Fipps";
+    src: url("../assets/font-family/FippsRegular-enqx.otf");
+  }
+
+  html,
+  label {
+    cursor:
+      url("../assets/cursor/cursor-default.png") 0 0,
+      auto;
+  }
+
+  :where(html, label):active {
+    cursor:
+      url("../assets/cursor/cursor-clicked.png") 0 0,
+      auto;
+  }
+
+  body {
+    font-family: "Glasstown", sans-serif;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Fipps", serif;
+    color: var(--color-card-foreground);
+  }
+
+  a {
+    color: var(--color-primary-foreground);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-accent-foreground);
+  }
+
+  button,
+  input,
+  select,
+  [role="button"] {
+    font-family: "Glasstown", sans-serif;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background: var(--color-card);
+    color: var(--color-card-foreground);
+  }
+
+  button:hover {
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+
+  button:disabled {
+    background: var(--color-muted);
+    color: var(--color-muted-foreground);
+    cursor: not-allowed;
+  }
+}
+
+@layer utilities {
+  .bg-fd-card {
+    background: var(--color-card) !important;
+  }
+
+  .text-fd-foreground {
+    color: var(--color-foreground) !important;
+  }
+
+  .text-fd-muted {
+    color: var(--color-muted-foreground) !important;
+  }
+
+  .border-fd {
+    border-color: var(--color-border) !important;
+  }
+}

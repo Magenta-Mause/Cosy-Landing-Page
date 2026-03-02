@@ -3,6 +3,7 @@ import { RootProvider } from "fumadocs-ui/provider/tanstack";
 import type * as React from "react";
 import SearchDialog from "@/components/search";
 import appCss from "@/styles/app.css?url";
+import icon from "@/assets/icon.ico?url";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -15,10 +16,13 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "Fumadocs on TanStack Start",
+        title: "COSY",
       },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: icon },
+    ],
   }),
   component: RootComponent,
 });
