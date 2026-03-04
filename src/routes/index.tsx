@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, Copy, SquareArrowOutUpRight } from "lucide-react";
 import { useState } from "react";
+import backgroundImg from "@/assets/background.png";
 import cosyLogo from "@/assets/props/cosy-logo.gif";
 import { Button } from "@/components/ui/button";
-import backgroundImg from "@/assets/background.png";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
