@@ -30,7 +30,7 @@ export function HomePage() {
       }}
     >
       {/* Header */}
-      <header className="bg-button-secondary-default h-fit">
+      <header className="bg-button-secondary-default h-fit border-b-3">
         <div className="mx-auto p-8 flex h-14 items-center justify-between px-4">
           <h1 className="!text-[30px] font-bold tracking-tight pt-2">COSY</h1>
           <nav className="flex items-center gap-6 text-sm">
@@ -85,7 +85,7 @@ export function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-button-secondary-default h-fit">
+      <footer className="bg-button-secondary-default h-fit border-t-3">
         <div className="mx-2 px-4 py-8 pb-4 text-sm">
           <div className="flex flex-col gap-6 md:flex-row md:justify-between">
             <div>
