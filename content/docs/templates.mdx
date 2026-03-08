@@ -1,0 +1,62 @@
+---
+title: Templates
+description: Pre-configured game server templates for quick setup.
+icon: LayoutTemplate
+---
+
+Templates let you create game servers with a single click. Instead of manually configuring the Docker image, ports, environment variables, and commands, you select a template and COSY fills in everything for you.
+
+## How Templates Work
+
+COSY fetches templates from an external **Template Service** (a Go microservice). Templates are defined as YAML files in a GitHub repository and synced every 5 minutes.
+
+Each template specifies:
+
+- **Docker image** and tag
+- **Port mappings** (TCP/UDP)
+- **Environment variables** with default values
+- **Execution command**
+- **Volume mount paths**
+- **Description and metadata**
+
+## Available Templates
+
+Templates are community-maintained and cover popular games like:
+
+- Minecraft (Vanilla, Fabric, Forge, Paper)
+- ARK: Survival Evolved
+- And more as the community contributes
+
+## Using a Template
+
+1. Click **Create Server** in the server yard
+2. Browse or search the available templates
+3. Select a template — all fields are pre-filled
+4. Optionally adjust settings (name, resource limits, etc.)
+5. Create the server
+
+You can modify any template-provided setting after creation through the server's [configuration](/docs/configuration) page.
+
+## Custom Templates
+
+The template system sources its templates from a public GitHub repository. If you want to contribute a template for a game that isn't supported yet, you can submit a pull request to the [cosy-template-service](https://github.com/magenta-mause/cosy-template-service) repository.
+
+A template YAML file looks like this:
+
+```yaml
+name: "Minecraft Fabric"
+dockerImage: "itzg/minecraft-server"
+dockerImageTag: "latest"
+ports:
+  - port: 25565
+    protocol: TCP
+environmentVariables:
+  - key: "EULA"
+    value: "TRUE"
+  - key: "TYPE"
+    value: "FABRIC"
+  - key: "VERSION"
+    value: "LATEST"
+volumeMounts:
+  - containerPath: "/data"
+```

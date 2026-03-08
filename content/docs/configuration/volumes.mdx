@@ -1,0 +1,42 @@
+---
+title: Volumes
+description: Persistent storage for game server files using Docker volumes.
+icon: HardDrive
+---
+
+Volumes provide persistent storage for your game servers. Without volumes, all data inside a container is lost when the server is stopped. With volumes, your world saves, configuration files, and plugins survive restarts.
+
+## How Volumes Work
+
+Each volume mount maps a path inside the container to a directory on the host machine. When the game server writes files to the mounted path, those files are actually stored on the host — outside the container.
+
+```
+Host: /opt/cosy/volumes/<server-uuid>/data
+        ↕ (mounted)
+Container: /data
+```
+
+## Configuring Volume Mounts
+
+In the **Settings** view, you can add volume mounts by specifying:
+
+| Field | Description | Example |
+|---|---|---|
+| **Container Path** | The path inside the container | `/data` |
+
+COSY automatically manages the host-side path. Each server gets its own isolated directory under the COSY volumes directory (default: `/opt/cosy/volumes`).
+
+## Default Mounts
+
+When using a [template](/docs/templates), volume mounts are pre-configured. For example, a Minecraft server template typically mounts `/data` which contains the world, server properties, plugins, and mods.
+
+## Data Lifecycle
+
+- **Server start** — Volumes are mounted into the new container
+- **Server stop** — Container is removed, volumes remain on disk
+- **Server restart** — New container mounts the same volumes, data is preserved
+- **Server delete** — Volumes are cleaned up along with the server
+
+## Accessing Volume Files
+
+You can browse and edit files in your volumes through the [File Browser](/docs/features/file-management) in the COSY web interface — no SSH access required.

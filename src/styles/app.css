@@ -72,7 +72,9 @@
   --color-button-secondary-hover: var(--button-secondary-hover);
   --color-button-secondary-click: var(--button-secondary-click);
   --color-button-secondary-disabled: var(--button-secondary-disabled);
-  --color-button-secondary-disabled-border: var(--button-secondary-disabled-border);
+  --color-button-secondary-disabled-border: var(
+    --button-secondary-disabled-border
+  );
   --color-button-secondary-focus: var(--button-secondary-focus);
   --color-button-secondary-border: var(--button-secondary-border);
 
@@ -82,7 +84,9 @@
   --color-button-destructive-disabled: var(--button-destructive-disabled);
   --color-button-destructive-focus: var(--button-destructive-focus);
   --color-button-destructive-text: var(--button-destructive-text);
-  --color-button-destructive-disabled-text: var(--button-destructive-disabled-text);
+  --color-button-destructive-disabled-text: var(
+    --button-destructive-disabled-text
+  );
 
   --color-button-drop-shadow: var(--button-drop-shadow);
 
@@ -220,13 +224,13 @@
 
 /* Reset text sizes within Fumadocs docs layout so its UI renders correctly */
 #nd-docs-layout {
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
+  --text-xs: 0.85rem;
+  --text-sm: 1rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.45rem;
+  --text-2xl: 1.7rem;
+  --text-3xl: 2.1rem;
 }
 
 /* Override prose text colors for better contrast on the Cosy tan background */
@@ -237,8 +241,42 @@
   --tw-prose-links: var(--link);
 }
 
+#nd-docs-layout .prose > p,
+#nd-docs-layout .prose > ul,
+#nd-docs-layout .prose > ol {
+  font-size: 1.85rem;
+}
+
+#toc-title {
+  height: 50px;
+  display: flex;
+  font-family: "Glasstown", sans-serif;
+  font-size: 2rem;
+}
+
+#toc-title > svg {
+  margin-right: 5px;
+}
+
+#nd-sidebar {
+  width: fit-content;
+}
+
+kbd {
+  font-size: 20px;
+}
+
+aside div:first-child > div > a {
+  font-size: 25px;
+}
+
+table {
+  font-size: 35px;
+}
+
 #nd-docs-layout .prose table {
-  font-size: 1rem;
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
 #nd-docs-layout,

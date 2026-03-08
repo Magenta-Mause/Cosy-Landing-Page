@@ -1,0 +1,48 @@
+---
+title: RCON
+description: Remote console settings for supported games.
+icon: Radio
+---
+
+RCON (Remote Console) is a protocol that allows sending commands to a game server over a network connection. Many game servers support RCON, including Minecraft and Source engine games.
+
+## What Is RCON?
+
+Without RCON, the COSY console can display server logs but cannot send commands to the game server process inside the container. RCON bridges this gap by providing a standardized way to send commands.
+
+## Enabling RCON
+
+1. **Enable RCON in the game server** — This is usually done through environment variables or server configuration files. For example, with the `itzg/minecraft-server` image, RCON is enabled by default.
+
+2. **Configure RCON in COSY** — In the server's **Settings** view, configure the RCON settings:
+
+| Setting | Description |
+|---|---|
+| **RCON Port** | The port the game server's RCON listens on (inside the container) |
+| **RCON Password** | The password required to authenticate RCON connections |
+
+3. **Restart the server** — RCON settings take effect on the next server start.
+
+## Using RCON
+
+Once configured, you can send commands directly from the COSY [Console](/docs/features/console) view. Commands are sent through RCON to the game server and the response is displayed in the console output.
+
+## Common RCON Commands
+
+### Minecraft
+
+| Command | Description |
+|---|---|
+| `list` | Show online players |
+| `say <message>` | Broadcast a message |
+| `op <player>` | Grant operator status |
+| `whitelist add <player>` | Add player to whitelist |
+| `stop` | Gracefully stop the server |
+
+### Source Engine (CS2, Garry's Mod, etc.)
+
+| Command | Description |
+|---|---|
+| `status` | Show server status and connected players |
+| `changelevel <map>` | Change the current map |
+| `kick <player>` | Kick a player |

@@ -1,0 +1,25 @@
+---
+title: Console
+description: View server logs and send commands from the browser.
+icon: TerminalSquare
+---
+
+The Console view gives you direct access to your game server's output and lets you send commands — all from the COSY web interface.
+
+## Viewing Logs
+
+The console displays real-time log output from your game server container. Logs are streamed via WebSocket, so they appear instantly without refreshing the page.
+
+Log data is also persisted in Loki (COSY's log aggregation backend), so you can scroll back through historical logs even after a server restart.
+
+## Sending Commands
+
+If [RCON](/docs/configuration/rcon) is configured for your server, you can type commands directly into the console input field. Commands are sent to the game server via the RCON protocol and the response is displayed in the log output.
+
+Without RCON configured, the console is read-only — you can see logs but cannot send commands.
+
+## Use Cases
+
+- **Monitoring** — Watch server startup, player connections, errors
+- **Administration** — Run game commands (whitelist, ban, op, etc.)
+- **Debugging** — Inspect error messages and stack traces when something goes wrong
