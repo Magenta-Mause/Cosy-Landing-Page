@@ -37,7 +37,12 @@ export function TemplateList() {
   }
 
   if (error) {
-    return <p>Could not load templates. Check the <a href={TEMPLATES_REPO}>cosy-templates</a> repository directly.</p>;
+    return (
+      <p>
+        Could not load templates. Check the <a href={TEMPLATES_REPO}>cosy-templates</a> repository
+        directly.
+      </p>
+    );
   }
 
   // Group by game directory (first two path segments: templates/{game}/)
@@ -70,17 +75,19 @@ export function TemplateList() {
                   borderBottom: isLast ? undefined : "none",
                 };
                 return (
-                <tr key={t.path}>
-                  <td style={gameCellStyle}>
-                    {isFirst ? game.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) : ""}
-                  </td>
-                  <td>
-                    <a href={TEMPLATES_REPO + t.path}>{t.name}</a>
-                  </td>
-                  <td>{t.description}</td>
-                </tr>
+                  <tr key={t.path}>
+                    <td style={gameCellStyle}>
+                      {isFirst
+                        ? game.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+                        : ""}
+                    </td>
+                    <td>
+                      <a href={TEMPLATES_REPO + t.path}>{t.name}</a>
+                    </td>
+                    <td>{t.description}</td>
+                  </tr>
                 );
-              })
+              }),
             )}
         </tbody>
       </table>
