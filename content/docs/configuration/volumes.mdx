@@ -11,10 +11,12 @@ Volumes provide persistent storage for your game servers. Without volumes, all d
 Each volume mount maps a path inside the container to a directory on the host machine. When the game server writes files to the mounted path, those files are actually stored on the host — outside the container.
 
 ```
-Host: /opt/cosy/volumes/<server-uuid>/data
+Host: /opt/cosy/volumes/<volume-mount-uuid>
         ↕ (mounted)
 Container: /data
 ```
+
+The host-side path is managed entirely by COSY — each volume mount gets an internal UUID that isn't visible in the UI. You don't need to know or interact with this path directly. Instead, use the [File Browser](/docs/features/file-management) to access your server files.
 
 ## Configuring Volume Mounts
 
@@ -24,7 +26,7 @@ In the **Settings** view, you can add volume mounts by specifying:
 |---|---|---|
 | **Container Path** | The path inside the container | `/data` |
 
-COSY automatically manages the host-side path. Each server gets its own isolated directory under the COSY volumes directory (default: `/opt/cosy/volumes`).
+COSY automatically manages the host-side path. Each volume mount is stored under the COSY volumes directory (default: `/opt/cosy/volumes`) with an auto-generated UUID as the directory name.
 
 ## Default Mounts
 

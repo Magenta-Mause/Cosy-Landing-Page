@@ -8,20 +8,26 @@ RCON (Remote Console) is a protocol that allows sending commands to a game serve
 
 ## What Is RCON?
 
-Without RCON, the COSY console can display server logs but cannot send commands to the game server process inside the container. RCON bridges this gap by providing a standardized way to send commands.
+By default, the COSY [Console](/docs/features/console) sends commands to the game server process via Docker attach (stdin). This works for most servers but has limitations — there is no structured response, and some game servers don't read from stdin reliably.
+
+RCON provides a more robust alternative. It's a network protocol specifically designed for sending commands to game servers and receiving structured responses. When RCON is configured, COSY uses it instead of Docker attach.
 
 ## Enabling RCON
 
 1. **Enable RCON in the game server** — This is usually done through environment variables or server configuration files. For example, with the `itzg/minecraft-server` image, RCON is enabled by default.
 
-2. **Configure RCON in COSY** — In the server's **Settings** view, configure the RCON settings:
+2. **Expose the RCON port** — Add a [port mapping](/docs/configuration/image-and-ports) for the RCON port so COSY can reach it on the host. For example, map container port `25575` to host port `25575`.
+
+   > **Warning:** Only expose the RCON port to the host — do **not** expose it to the internet. RCON traffic is not encrypted and the password is sent in plain text. COSY connects to the RCON port locally on the host, so there is no need for external access.
+
+3. **Configure RCON in COSY** — In the server's **Settings** view, configure the RCON settings:
 
 | Setting | Description |
 |---|---|
-| **RCON Port** | The port the game server's RCON listens on (inside the container) |
+| **RCON Port** | The port the game server's RCON listens on (the host-side port from the mapping above) |
 | **RCON Password** | The password required to authenticate RCON connections |
 
-3. **Restart the server** — RCON settings take effect on the next server start.
+4. **Start the server** — RCON settings are locked while the server is running, so make sure to configure them while the server is stopped.
 
 ## Using RCON
 

@@ -14,9 +14,9 @@ Log data is also persisted in Loki (COSY's log aggregation backend), so you can 
 
 ## Sending Commands
 
-If [RCON](/docs/configuration/rcon) is configured for your server, you can type commands directly into the console input field. Commands are sent to the game server via the RCON protocol and the response is displayed in the log output.
+You can type commands directly into the console input field. By default, commands are sent to the game server process via Docker attach (stdin).
 
-Without RCON configured, the console is read-only — you can see logs but cannot send commands.
+If [RCON](/docs/configuration/rcon) is configured, commands are sent via the RCON protocol instead, which provides structured responses displayed in the log output.
 
 ## Use Cases
 

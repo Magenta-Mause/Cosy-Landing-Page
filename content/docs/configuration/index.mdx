@@ -15,6 +15,6 @@ Every game server in COSY has a set of configurable properties that control how 
   <Card title="RCON" href="/docs/configuration/rcon" description="Remote console settings for supported games." />
 </Cards>
 
-## When Do Changes Take Effect?
+## When Can I Change Settings?
 
-Configuration changes are saved immediately to the database. However, they only take effect the **next time the server is started**. If the server is currently running, you need to **restart** it for changes to apply (the container is recreated with the new settings).
+Docker-related settings (image, ports, environment variables, volumes, resource limits, execution command) are **locked while the server is running**. You need to **stop** the server before you can edit these settings. Once stopped, changes are saved immediately and take effect on the next start.

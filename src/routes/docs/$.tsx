@@ -9,6 +9,7 @@ import defaultMdxComponents from "fumadocs-ui/mdx";
 import { useMemo } from "react";
 import { baseOptions } from "@/lib/layout.shared";
 import { source } from "@/lib/source";
+import { TemplateList } from "@/components/template-list";
 
 export const Route = createFileRoute("/docs/$")({
   component: Page,
@@ -45,6 +46,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
           <MDX
             components={{
               ...defaultMdxComponents,
+              TemplateList,
             }}
           />
         </DocsBody>

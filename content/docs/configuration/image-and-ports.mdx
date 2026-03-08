@@ -23,27 +23,27 @@ Most game servers have community-maintained Docker images available on Docker Hu
 
 Ports define how players connect to your game server. Each port mapping consists of:
 
-| Field | Description |
-|---|---|
+| Field              | Description                                                   |
+| ------------------ | ------------------------------------------------------------- |
+| **Instance Port**  | The port on your host machine that maps to the container port |
 | **Container Port** | The port inside the container that the game server listens on |
-| **Host Port** | The port on your host machine that maps to the container port |
-| **Protocol** | `TCP` or `UDP` — depends on the game |
+| **Protocol**       | `TCP` or `UDP` — depends on the game                          |
 
 ### Example
 
 A Minecraft server typically uses:
 
 | Container Port | Host Port | Protocol |
-|---|---|---|
-| 25565 | 25565 | TCP |
+| -------------- | --------- | -------- |
+| 25565          | 25565     | TCP      |
 
 An ARK server might need multiple ports:
 
 | Container Port | Host Port | Protocol |
-|---|---|---|
-| 7777 | 7777 | UDP |
-| 7778 | 7778 | UDP |
-| 27015 | 27015 | UDP |
+| -------------- | --------- | -------- |
+| 7777           | 7777      | UDP      |
+| 7778           | 7778      | UDP      |
+| 27015          | 27015     | UDP      |
 
 ### Port Conflicts
 

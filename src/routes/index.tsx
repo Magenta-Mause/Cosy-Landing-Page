@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Check, Copy, SquareArrowOutUpRight } from "lucide-react";
 import { useState } from "react";
 import backgroundImg from "@/assets/background.png";
@@ -32,11 +32,14 @@ export function HomePage() {
       {/* Header */}
       <header className="bg-button-secondary-default h-fit border-b-3">
         <div className="mx-auto p-8 flex h-14 items-center justify-between px-4">
-          <h1 className="!text-[30px] font-bold tracking-tight pt-2">COSY</h1>
+          <h1 className="text-[30px]! font-bold tracking-tight pb-5">COSY</h1>
           <nav className="flex items-center gap-6 text-sm">
-            <a href="/docs" className="hover:text-muted-foreground transition">
+            <Link
+              to="/docs/$"
+              className="hover:text-muted-foreground transition"
+            >
               Documentation
-            </a>
+            </Link>
             <a
               href="https://github.com/Magenta-Mause/Cosy"
               className="hover:text-muted-foreground transition flex items-center gap-1"
@@ -56,9 +59,15 @@ export function HomePage() {
         <div className="mt-8 w-full max-w-xl">
           <div className="flex items-center rounded-md border-border border-3 bg-card px-1 py-1 gap-2">
             <div className="flex-1 min-w-0 overflow-x-auto">
-              <code className="block whitespace-nowrap text-sm px-2">$ {curlCommand}</code>
+              <code className="block whitespace-nowrap text-sm px-2">
+                $ {curlCommand}
+              </code>
             </div>
-            <Button variant="ghost" onClick={copyToClipboard} className="border-3 shrink-0">
+            <Button
+              variant="ghost"
+              onClick={copyToClipboard}
+              className="border-3 shrink-0"
+            >
               {copied ? (
                 <Check className="h-4 w-4 stroke-3" />
               ) : (
@@ -69,7 +78,7 @@ export function HomePage() {
         </div>
         <div className="mt-8 flex gap-4">
           <Button asChild size="lg" className="border-3">
-            <a href="/docs">Get Started</a>
+            <a href="/docs">Documentation</a>
           </Button>
 
           <Button asChild size="lg" className="border-3" variant="secondary">
@@ -91,8 +100,8 @@ export function HomePage() {
             <div>
               <h5 className="text-sm">COSY by MedalHeads</h5>
               <p className="mt-2 max-w-md text-muted-foreground">
-                COSY stands for Cost Optimised Server Yard. A simplified, cost-efficient
-                self-hosting service for running game servers.
+                COSY stands for Cost Optimised Server Yard. A simplified,
+                cost-efficient self-hosting service for running game servers.
               </p>
             </div>
 

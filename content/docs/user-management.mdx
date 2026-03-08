@@ -13,7 +13,7 @@ There are three roles with different privilege levels:
 | Role | Description |
 |---|---|
 | **Owner** | Full system access. Can manage all users (including Admins), assign roles, delete users, and access every server. There is typically one Owner per COSY instance (created during installation). |
-| **Admin** | Can manage all servers and users (except other Admins and the Owner). Has no resource quotas — can create unlimited servers. |
+| **Admin** | Can manage all servers and users (except other Admins and the Owner). Resource quotas are enforced if configured. |
 | **Quota User** | Standard user with resource limits. Can only access their own servers and servers shared with them via [Access Groups](/docs/features/access-management). |
 
 ### Role Comparison
@@ -25,7 +25,7 @@ There are three roles with different privilege levels:
 | Manage users | Yes | Yes (not Admins) | No |
 | Assign roles | Yes | No | No |
 | Delete users | Yes | No | No |
-| Resource quotas | None | None | Enforced |
+| Resource quotas | Enforced if set | Enforced if set | Enforced |
 
 ## Inviting Users
 
@@ -40,7 +40,7 @@ Invites are **single-use** — once redeemed, the key is invalidated. The Owner 
 
 ## Resource Limits
 
-Quota Users have a maximum amount of **memory** and **CPU** they can allocate across all their servers. When creating or modifying a server, COSY checks that the total resource usage stays within the user's quota.
+Users can have a maximum amount of **memory** and **CPU** they can allocate across all their servers. When starting a server, COSY checks that the total resource usage stays within the user's quota. This applies to all roles — if resource limits are configured on a user, they are enforced regardless of whether the user is an Owner, Admin, or Quota User.
 
 Admins and the Owner can adjust a user's resource limits at any time from the User Management page.
 
