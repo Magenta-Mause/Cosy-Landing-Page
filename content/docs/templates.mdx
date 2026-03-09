@@ -4,7 +4,7 @@ description: Pre-configured game server templates for quick setup.
 icon: LayoutTemplate
 ---
 
-Templates let you create game servers with a single click. Instead of manually configuring the Docker image, ports, environment variables, and commands, you select a template and COSY fills in everything for you.
+Templates let you create game servers without needing to configure all the technical details by yourself. Instead of manually configuring the Docker image, ports, environment variables, and commands, you select a template and COSY fills in everything for you.
 
 ## How Templates Work
 
@@ -29,15 +29,9 @@ The collection is community-maintained — new games and variations are added th
 
 ## Using a Template
 
-1. Click the **construction site** tile in the server yard to create a new server
-2. Select a server name and the Game for which you want to create a server
-3. Click the "Next Step" button
-4. Select the template you want to use
-5. Fill in any **template variables** (e.g., Minecraft version, server name, difficulty)
-6. Optionally adjust any settings of the game server
-7. Create the server
+Templates are selected during the server creation process. For a detailed walkthrough, see [Your First Game Server](/docs/getting-started/first-game-server).
 
-You can modify any template-provided setting either in the last step or after the creation through the server's [configuration](/docs/configuration) page.
+In short: create a new server, pick a game, select a template, fill in any template variables (e.g., memory allocation, player limits), and create the server. You can modify any template-provided setting after creation through the server's [configuration](/docs/configuration) page.
 
 ## Template Variables
 
@@ -53,6 +47,13 @@ Variable types:
 | `number`  | Numeric input                                     |
 | `boolean` | True/false toggle                                 |
 | `select`  | Dropdown with predefined options                  |
+
+Each variable can also specify:
+
+- **`regex`** — A regular expression to validate user input (string type only). For example, `\d\.\d+\.\d+` ensures a valid version number like `1.1.6`.
+- **`default`** — A default value that is pre-filled when creating the server.
+- **`example`** — An example value shown as a hint in the input field.
+- **`options`** — A list of allowed values (required for the `select` type).
 
 ## Contributing Templates
 

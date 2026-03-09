@@ -22,33 +22,13 @@ RCON provides a more robust alternative. It's a network protocol specifically de
 
 3. **Configure RCON in COSY** — In the server's **Settings** view, configure the RCON settings:
 
-| Setting | Description |
-|---|---|
-| **RCON Port** | The port the game server's RCON listens on (the host-side port from the mapping above) |
-| **RCON Password** | The password required to authenticate RCON connections |
+| Setting           | Description                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------- |
+| **RCON Port**     | The port the game server's RCON listens on (the host-side port from the mapping above) |
+| **RCON Password** | The password required to authenticate RCON connections                                 |
 
 4. **Start the server** — RCON settings are locked while the server is running, so make sure to configure them while the server is stopped.
 
 ## Using RCON
 
 Once configured, you can send commands directly from the COSY [Console](/docs/features/console) view. Commands are sent through RCON to the game server and the response is displayed in the console output.
-
-## Common RCON Commands
-
-### Minecraft
-
-| Command | Description |
-|---|---|
-| `list` | Show online players |
-| `say <message>` | Broadcast a message |
-| `op <player>` | Grant operator status |
-| `whitelist add <player>` | Add player to whitelist |
-| `stop` | Gracefully stop the server |
-
-### Source Engine (CS2, Garry's Mod, etc.)
-
-| Command | Description |
-|---|---|
-| `status` | Show server status and connected players |
-| `changelevel <map>` | Change the current map |
-| `kick <player>` | Kick a player |

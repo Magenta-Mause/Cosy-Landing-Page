@@ -10,22 +10,22 @@ COSY uses an **invitation-based** system — there is no open registration. User
 
 There are three roles with different privilege levels:
 
-| Role | Description |
-|---|---|
+| Role      | Description                                                                                                                                                                                     |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Owner** | Full system access. Can manage all users (including Admins), assign roles, delete users, and access every server. There is typically one Owner per COSY instance (created during installation). |
-| **Admin** | Can manage all servers and users (except other Admins and the Owner). Resource quotas are enforced if configured. |
-| **Quota User** | Standard user with resource limits. Can only access their own servers and servers shared with them via [Access Groups](/docs/features/access-management). |
+| **Admin** | Can manage all servers and Users. Cannot manage other Admins or the Owner. Resource quotas are enforced if configured.                                                                          |
+| **User**  | Standard user with resource limits. Can only access their own servers and servers shared with them via [Access Groups](/docs/features/access-management).                                       |
 
 ### Role Comparison
 
-| Capability | Owner | Admin | Quota User |
-|---|---|---|---|
-| Manage own servers | Yes | Yes | Yes |
-| Manage all servers | Yes | Yes | No |
-| Manage users | Yes | Yes (not Admins) | No |
-| Assign roles | Yes | No | No |
-| Delete users | Yes | No | No |
-| Resource quotas | Enforced if set | Enforced if set | Enforced |
+| Capability         | Owner                  | Admin           | User     |
+| ------------------ | ---------------------- | --------------- | -------- |
+| Manage own servers | Yes                    | Yes             | Yes      |
+| Manage all servers | Yes                    | Yes             | No       |
+| Manage users       | Yes                    | Users only      | No       |
+| Assign roles       | Yes                    | No              | No       |
+| Delete users       | Yes (not self)         | Users only      | Self only |
+| Resource quotas    | No limitations enfored | Enforced if set | Enforced |
 
 ## Inviting Users
 
@@ -40,7 +40,7 @@ Invites are **single-use** — once redeemed, the key is invalidated. The Owner 
 
 ## Resource Limits
 
-Users can have a maximum amount of **memory** and **CPU** they can allocate across all their servers. When starting a server, COSY checks that the total resource usage stays within the user's quota. This applies to all roles — if resource limits are configured on a user, they are enforced regardless of whether the user is an Owner, Admin, or Quota User.
+Users can have a maximum amount of **memory** and **CPU** they can allocate across all their servers. When starting a server, COSY checks that the total resource usage stays within the user's quota. This applies to all roles — if resource limits are configured on a user, they are enforced regardless of whether the user is an Owner, Admin, or User.
 
 Admins and the Owner can adjust a user's resource limits at any time from the User Management page.
 
@@ -54,4 +54,4 @@ When a user is deleted:
 - Their game servers are also deleted along with all associated data
 - Any Access Group memberships are revoked
 
-Only the Owner can delete users. Admins cannot delete other Admins or the Owner.
+The Owner can delete any user except themselves. Admins can delete Users but not other Admins or the Owner. Any user can also delete their own account.

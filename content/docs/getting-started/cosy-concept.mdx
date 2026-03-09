@@ -53,11 +53,11 @@ Created → Starting (image pull) → Running → Stopped
 - **Created** — Configuration exists but the container hasn't been started yet
 - **Starting** — Docker image is being pulled or container is booting
 - **Running** — Container is active, logs and metrics are streaming
-- **Stopped** — Container removed, volumes preserved
+- **Stopped** — Container removed, configured volumes preserved
 - **Failed** — Container crashed or encountered an error
 
 ## Data Persistence
 
-Game server data lives in **Docker volumes** that are mounted into the container. When a server is stopped or restarted, the volumes remain intact. This means world saves, configuration files, and plugins persist across restarts.
+Only data stored in paths that are configured as **volume mounts** persists across restarts. Any files written outside of a mounted volume are lost when the container is stopped.
 
-See [Volumes](/docs/configuration/volumes) for details on how volume mounts work.
+See [Volumes](/docs/configuration/volumes) for details on how to configure volume mounts.

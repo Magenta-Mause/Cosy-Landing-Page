@@ -4,7 +4,7 @@ description: How game servers can send custom metrics to COSY.
 icon: Activity
 ---
 
-Beyond the standard CPU/memory/network metrics that COSY collects automatically, game servers can send **custom metrics** — like player counts, TPS (ticks per second), or any game-specific data.
+Beyond the standard CPU/memory/network metrics that COSY collects automatically, game servers can send **custom metrics** — like player counts, server health, or any game-specific data.
 
 ## How It Works
 
@@ -14,7 +14,7 @@ Each game server container receives auto-generated environment variables includi
 - `COSY_BASE_URL` — The COSY backend URL
 - `COSY_GAME_SERVER_UUID` — The server's unique ID
 
-A script or plugin inside the container can use these to send metrics to COSY's internal API.
+A script, plugin or mod inside the container can use these to send metrics to COSY's internal API.
 
 ## API Endpoint
 
@@ -24,10 +24,10 @@ PUT /api/internal/game-server/custom-metric/{uuid}
 
 ### Headers
 
-| Header | Value |
-|---|---|
+| Header          | Value                                |
+| --------------- | ------------------------------------ |
 | `Authorization` | The value of `COSY_CONTAINER_SECRET` |
-| `Content-Type` | `application/json` |
+| `Content-Type`  | `application/json`                   |
 
 ### Request Body
 
