@@ -9,27 +9,16 @@ icon: Network
 - An existing Kubernetes cluster
 - `kubectl` installed and configured with cluster access
 - An Ingress controller (e.g., nginx-ingress, Traefik)
+- `openssl` or `htpasswd` (from `apache2-utils`) — used to generate credentials during installation
 - Root or sudo access on the machine running the installer
 
 ## Step 1: Run the Installer
 
 ```bash
-sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Magenta-Mause/Cosy/v1.0.0/install_cosy.sh)" _
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Magenta-Mause/Cosy/v1.0.0/install_cosy.sh)" _ kubernetes
 ```
 
-## Step 2: Select Deployment Method
-
-```
-Select deployment method:
-  1) Docker  (default)
-  2) Kubernetes
-
-Enter choice [default: 1]: 2
-```
-
-Type `2` and press **Enter** to select Kubernetes.
-
-## Step 3: Admin Username
+## Step 2: Admin Username
 
 ```
 Admin username [default: admin]:
@@ -37,15 +26,15 @@ Admin username [default: admin]:
 
 Press **Enter** to use `admin`, or type a custom name for the initial owner account.
 
-## Step 4: Domain
+## Step 3: Domain
 
 ```
 Domain [default: your-hostname]:
 ```
 
-The domain that will be used for Kubernetes Ingress rules and CORS configuration. This should be the domain you plan to point at your cluster (e.g., `cosy.example.com`).
+The domain that will be used for Kubernetes Ingress rules and CORS configuration. This should be the domain you plan to point at your cluster (e.g., `cosy.example.com`). For local testing, set this to `localhost`.
 
-## Step 5: Footer Information (Optional)
+## Step 4: Footer Information (Optional)
 
 ```
 Footer full name [default: empty]:
@@ -57,13 +46,15 @@ Footer city & zip code [default: empty]:
 
 Optional contact info for the COSY UI footer. Press **Enter** to skip each one.
 
+> **Note:** Depending on your jurisdiction, you may be required to provide legal contact information (e.g., an imprint) for publicly accessible services. Check your local regulations and fill in the relevant fields if needed.
+
 ## What Happens Next
 
 After the prompts, the script:
 
-1. **Checks prerequisites** — Verifies `kubectl` and cluster connectivity (also handles `SUDO_USER` kubeconfig resolution)
+1. **Checks prerequisites** — Verifies `kubectl` and cluster connectivity
 2. **Creates the `cosy` namespace**
-3. **Creates Kubernetes secrets** — PostgreSQL, InfluxDB, Loki, and admin credentials (5 secrets total)
+3. **Creates Kubernetes secrets** — PostgreSQL, InfluxDB, Loki, and admin credentials
 4. **Downloads all manifests** to a temporary directory
 5. **Applies manifests** with placeholder substitution for your domain, image tags, and InfluxDB config:
    - PostgreSQL (StatefulSet + PVC + Service)
@@ -73,10 +64,10 @@ After the prompts, the script:
    - Backend (Deployment + NodePort Service)
    - Frontend (Deployment + Service)
    - Ingress rules (frontend on `/`, backend on `/api`)
-6. **Waits for all pods to become ready** (300s timeout for deployments, 180s for statefulsets)
+6. **Waits for all pods to become ready**
 7. **Cleans up** the temporary manifest directory
 
-## Step 6: Save Your Credentials
+## Step 5: Save Your Credentials
 
 ```
 ╔═══════════════════════════════════════════════════════════╗
@@ -96,7 +87,7 @@ After the prompts, the script:
   ⚠  Please save the password above - it will not be shown again.
 ```
 
-**Save the password.** Unlike the Docker installation, there is no `credentials.txt` file — the password is only shown once in the terminal output.
+**Save the password.** The password is only shown once in the terminal output. The admin credentials are stored in the `cosy-app-secrets` Kubernetes secret in the `cosy` namespace.
 
 ## Resources Created
 
@@ -146,15 +137,13 @@ kubectl get all -n cosy
 ## Non-Interactive Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/magenta-mause/cosy/main/install_cosy.sh \
-  | sudo bash -s -- kubernetes --default
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Magenta-Mause/Cosy/v1.0.0/install_cosy.sh)" _ kubernetes --default
 ```
 
 Or with custom values:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/magenta-mause/cosy/main/install_cosy.sh \
-  | sudo bash -s -- kubernetes \
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Magenta-Mause/Cosy/v1.0.0/install_cosy.sh)" _ kubernetes \
     --username myadmin \
     --domain cosy.example.com
 ```

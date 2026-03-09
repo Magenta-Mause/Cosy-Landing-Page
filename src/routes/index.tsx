@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Copy, SquareArrowOutUpRight } from "lucide-react";
 import { useState } from "react";
 import backgroundImg from "@/assets/background.png";
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/")({
 
 export function HomePage() {
   const curlCommand =
-    'sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Magenta-Mause/Cosy/refs/heads/main/install_cosy.sh)" _';
+    'sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Magenta-Mause/Cosy/v1.0.0/install_cosy.sh)" _';
   const [copied, setCopied] = useState(false);
 
   async function copyToClipboard() {
@@ -32,9 +32,9 @@ export function HomePage() {
       {/* Header */}
       <header className="bg-button-secondary-default h-fit border-b-3">
         <div className="mx-auto p-8 flex h-14 items-center justify-between px-4">
-          <h1 className="text-[30px]! font-bold tracking-tight pb-5">COSY</h1>
+          <h1 className="!text-[30px] font-bold tracking-tight pb-5">COSY</h1>
           <nav className="flex items-center gap-6 text-sm">
-            <Link to="/docs/$" className="hover:text-muted-foreground transition">
+            <Link to="/docs" className="hover:text-muted-foreground transition">
               Documentation
             </Link>
             <a

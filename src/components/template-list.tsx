@@ -12,7 +12,8 @@ interface TemplateApiResponse {
 }
 
 const TEMPLATES_API = "https://cosy-templates.jannekeipert.de/templates";
-const TEMPLATES_REPO = "https://github.com/Magenta-Mause/cosy-templates/blob/main/";
+const TEMPLATES_REPO = "https://github.com/Magenta-Mause/cosy-templates";
+const TEMPLATES_REPO_BLOB = "https://github.com/Magenta-Mause/cosy-templates/blob/main/";
 
 export function TemplateList() {
   const [templates, setTemplates] = useState<Template[]>([]);
@@ -21,8 +22,12 @@ export function TemplateList() {
 
   useEffect(() => {
     fetch(TEMPLATES_API)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
       .then((data: TemplateApiResponse) => {
+        if (!Array.isArray(data.templates)) throw new Error("Invalid response");
         setTemplates(data.templates);
         setLoading(false);
       })
@@ -82,7 +87,7 @@ export function TemplateList() {
                         : ""}
                     </td>
                     <td>
-                      <a href={TEMPLATES_REPO + t.path}>{t.name}</a>
+                      <a href={TEMPLATES_REPO_BLOB + t.path}>{t.name}</a>
                     </td>
                     <td>{t.description}</td>
                   </tr>

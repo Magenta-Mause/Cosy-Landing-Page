@@ -6,6 +6,8 @@ icon: Download
 
 COSY can be deployed using **Docker Compose** or **Kubernetes**. Both methods use the same interactive install script — just run it and follow the prompts.
 
+> **Note:** COSY currently only supports **HTTP**. HTTPS support will be available in a future release. If you need HTTPS now, you can place a reverse proxy (e.g., nginx, Caddy) in front of COSY to handle TLS termination.
+
 ## Quick Start
 
 Download and run the install script:
@@ -22,9 +24,9 @@ The script walks you through the setup interactively — it asks for the deploym
 | -------------- | --------------------------------------- | ----------------------------------------------------------------------------------- |
 | **Best for**   | Single server, simple setups            | Users who already have a cluster and already host multiple services on their server |
 | **Complexity** | Low — single command, systemd autostart | Medium — requires existing cluster and Ingress controller                           |
-| **Scaling**    | Single instance                         | Cluster-native                                                                      |
+| **Scaling**    | Single instance                         | Single instance (game servers run on the backend pod's host)                        |
 | **Management** | `systemctl start/stop cosy`             | `kubectl` / ArgoCD                                                                  |
-| **Storage**    | Docker volumes on disk                  | Persistent Volume Claims                                                            |
+| **Storage**    | Game server volumes on disk             | Game server volumes on disk (on the backend pod's host)                             |
 
 Choose **Docker** if you have a dedicated server and want the simplest path to running COSY. Choose **Kubernetes** if you already run a cluster and want COSY deployed alongside your other workloads.
 
