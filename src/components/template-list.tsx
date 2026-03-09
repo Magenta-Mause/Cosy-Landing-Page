@@ -54,7 +54,10 @@ export function TemplateList() {
   const grouped: Record<string, Template[]> = {};
   for (const t of templates) {
     const game = t.path.split("/")[1] ?? "other";
-    (grouped[game] ??= []).push(t);
+    if (!grouped[game]) {
+      grouped[game] = [];
+    }
+    grouped[game].push(t);
   }
 
   return (

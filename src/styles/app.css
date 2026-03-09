@@ -72,9 +72,7 @@
   --color-button-secondary-hover: var(--button-secondary-hover);
   --color-button-secondary-click: var(--button-secondary-click);
   --color-button-secondary-disabled: var(--button-secondary-disabled);
-  --color-button-secondary-disabled-border: var(
-    --button-secondary-disabled-border
-  );
+  --color-button-secondary-disabled-border: var(--button-secondary-disabled-border);
   --color-button-secondary-focus: var(--button-secondary-focus);
   --color-button-secondary-border: var(--button-secondary-border);
 
@@ -84,9 +82,7 @@
   --color-button-destructive-disabled: var(--button-destructive-disabled);
   --color-button-destructive-focus: var(--button-destructive-focus);
   --color-button-destructive-text: var(--button-destructive-text);
-  --color-button-destructive-disabled-text: var(
-    --button-destructive-disabled-text
-  );
+  --color-button-destructive-disabled-text: var(--button-destructive-disabled-text);
 
   --color-button-drop-shadow: var(--button-drop-shadow);
 
@@ -283,10 +279,6 @@
   line-height: 1;
 }
 
-[data-card="true"] > h3 {
-  margin-bottom: 15px;
-}
-
 #nd-docs-layout,
 .dark #nd-docs-layout {
   --color-fd-muted-foreground: oklch(35% 0.08 30);
@@ -427,6 +419,10 @@ h5 {
 
 h6 {
   font-size: 10px;
+}
+
+[data-card="true"] > h3 {
+  margin-bottom: 15px;
 }
 
 [data-slot="context-menu-item"] {
