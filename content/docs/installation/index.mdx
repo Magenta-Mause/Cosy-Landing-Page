@@ -6,7 +6,16 @@ icon: Download
 
 COSY can be deployed using **Docker Compose** or **Kubernetes**. Both methods use the same interactive install script — just run it and follow the prompts.
 
-> **Note:** COSY currently only supports **HTTP**. HTTPS support will be available in a future release. If you need HTTPS now, you can place a reverse proxy (e.g., nginx, Caddy) in front of COSY to handle TLS termination.
+> **Note:** COSY currently only supports **HTTP**. Built-in HTTPS support is planned for a future release.
+
+### Want HTTPS now?
+
+You can set up a reverse proxy to handle TLS termination in front of COSY:
+
+1. **Configure COSY** to listen on `localhost:81` (or any local port).
+2. **Set up an [nginx](https://nginx.org/) reverse proxy** that terminates TLS and forwards traffic to `localhost:81`.
+3. **Get a free domain** using [DuckDNS](https://duckdns.vercel.app/) — it provides free subdomains that you can point to your server.
+4. **Obtain an SSL certificate** using [Certbot](https://certbot.eff.org/) — it automates issuing and renewing free Let's Encrypt certificates. See the [Certbot instructions](https://certbot.eff.org/instructions) to get started with your specific server and OS.
 
 ## Quick Start
 
