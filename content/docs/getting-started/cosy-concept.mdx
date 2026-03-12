@@ -29,18 +29,9 @@ When you **stop** a game server, COSY stops and removes the container. Your data
 
 ## Auto-Generated Environment Variables
 
-COSY automatically injects the following environment variables into every game server container:
+COSY automatically injects environment variables like `COSY_GAME_SERVER_UUID`, `COSY_CONTAINER_SECRET`, and others into every game server container. These are set automatically — you don't need to configure them. The `COSY_CONTAINER_SECRET` is regenerated every time the server starts for security.
 
-| Variable                      | Description                                                                                      |
-| ----------------------------- | ------------------------------------------------------------------------------------------------ |
-| `COSY_GAME_SERVER_UUID`       | Unique identifier of the server in COSY's database                                               |
-| `COSY_GAME_SERVER_NAME`       | The human-readable server name                                                                   |
-| `COSY_GAME_SERVER_OWNER`      | Username of the server owner                                                                     |
-| `COSY_CONTAINER_SECRET`       | 32-character secret for authenticating [custom metrics](/docs/features/custom-metrics) API calls |
-| `COSY_BASE_URL`               | Base URL of the COSY backend (for metrics callbacks)                                             |
-| `COSY_METRICS_PERIOD_SECONDS` | How often COSY collects metrics from this container                                              |
-
-These variables are set automatically — you don't need to configure them. The `COSY_CONTAINER_SECRET` is regenerated every time the server starts for security.
+See [Environment Variables](/docs/configuration/environment-variables) for the full list.
 
 ## Container Lifecycle
 
